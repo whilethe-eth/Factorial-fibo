@@ -1,0 +1,61 @@
+def factorial(n):
+    """Вычисляет факториал числа n"""
+    if n < 0:
+        return "Факториал отрицательного числа не определен"
+    if n == 0 or n == 1:
+        return 1
+    result = 1
+    for i in range(2, n + 1):
+        result *= i
+    return result
+
+
+def fibonacci(n):
+    """Возвращает список первых n чисел Фибоначчи"""
+    fib_list = []
+    a, b = 0, 1
+    for _ in range(n):
+        fib_list.append(a)
+        a, b = b, a + b
+    return fib_list
+
+
+def is_prime(num):
+    """Проверяет, является ли число простым"""
+    if num <= 1:
+        return False
+    for i in range(2, int(num**0.5) + 1):
+        if num % i == 0:
+            return False
+    return True
+
+
+def main():
+    print("Выберите, что вы хотите сделать:")
+    print("1. Вычислить факториал")
+    print("2. Получить числа Фибоначчи")
+    print("3. Проверить на простоту")
+
+    choice = int(input("Введите номер варианта (1/2/3): "))
+
+    if choice == 1:
+        num = int(input("Введите число для вычисления факториала: "))
+        print(f"Факториал {num} равен {factorial(num)}")
+
+    elif choice == 2:
+        num = int(input("Введите количество чисел Фибоначчи: "))
+        print(f"Первые {num} числа Фибоначчи: {fibonacci(num)}")
+
+    elif choice == 3:
+        num = int(input("Введите число для проверки на простоту: "))
+        if is_prime(num):
+            print(f"{num} является простым числом")
+        else:
+            print(f"{num} не является простым числом")
+
+    else:
+        print("Некорректный выбор")
+
+
+if __name__ == "__main__":
+    main()
